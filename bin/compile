@@ -22,7 +22,7 @@ cd ${BUILD_DIR}
 
 mkdir -p .profile.d
 
-DEFAULT_JULIA_VERSION=1.7.2
+DEFAULT_JULIA_VERSION=1.9.0
 JULIA_VERSION="$DEFAULT_JULIA_VERSION"
 if [[ -f Project.toml ]]; then
   JULIA_VERSION="$(sed -rn 's/^julia\s*=\s*"(.*)"/\1/p' Project.toml)"
@@ -99,7 +99,7 @@ else
 julia <<__EOF__
 import Pkg
 Pkg.activate(mktempdir())
-Pkg.add(Pkg.PackageSpec(name="PackageCompiler", version="1.2.4"))
+Pkg.add(Pkg.PackageSpec(name="PackageCompiler", version="2.1.7"))
 using PackageCompiler
 Pkg.activate(get(ENV, "JULIA_PROJECT", "."))
 Pkg.instantiate()
